@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  integer-api:
+    image: loopstock.io/integer-api
+    environment:
+      - INTEGER_API_PORT=8080
+      - INTEGER_API_DATABASE_HOST=mysql
+      - INTEGER_API_DATABASE_PORT=3306
+      - INTEGER_API_DATABASE_USER=integerapi
+      - INTEGER_API_DATABASE_PASSWORD=1nt3g3r4p1
+      - INTEGER_API_DATABASE_DB=ls_integer_api
+    ports:
+      - 8080
+    depends_on:
+      - mysql
+    networks:
+      - default
+      - loopstock_network
+  mysql:
+    image: mysql:5
+    environment:
+      - MYSQL_ROOT_PASSWORD=l00p5t0ck
+      - MYSQL_USER=integerapi
+      - MYSQL_PASSWORD=1nt3g3r4p1
+      - MYSQL_DATABASE=ls_integer_api
+    volumes:
+      - mysqldata:/var/lib/mysql
+
+volumes:
+  mysqldata:
+
+networks:
+  default:
+  loopstock_network:
+    external: true
