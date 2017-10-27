@@ -23,7 +23,7 @@ run:
 	docker-compose up --scale integer-gen=${INSTANCES} -d
 
 logs:
-	docker-compose logs -f
+	docker-compose logs -f ${SERVICE}
 
 stop:
 	docker-compose stop
