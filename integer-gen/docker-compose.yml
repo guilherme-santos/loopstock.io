@@ -1,0 +1,26 @@
+version: '2'
+
+services:
+  integer-gen:
+    image: loopstock.io/integer-gen
+    environment:
+      - INTEGER_GEN_NSQ_URL=nsqd:4150
+      - INTEGER_GEN_INTERVAL=1s
+    depends_on:
+      - nsqd
+  nsqd:
+    image: nsqio/nsq
+    command: /nsqd -lookupd-tcp-address=nsqlookupd:4160 --mem-queue-size=0
+    volumes:
+      - nsqdata:/data
+    networks:
+      - default
+      - loopstock_network
+
+volumes:
+  nsqdata:
+
+networks:
+  default:
+  loopstock_network:
+    external: true
