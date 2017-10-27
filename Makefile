@@ -1,12 +1,12 @@
 network:
 	@-docker network create loopstock_network
 
-docker-image: network
+docker-image:
 	$(MAKE) -C integer-api $@
 	$(MAKE) -C integer-gen $@
 	$(MAKE) -C integeraverage-cal $@
 
-run:
+run: network
 	$(MAKE) -C broker $@
 	$(MAKE) -C integer-api $@
 	$(MAKE) -C integer-gen $@
