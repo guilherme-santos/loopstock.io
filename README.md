@@ -33,13 +33,13 @@ make ports
 
 #### NSQAdmin - Message Broker
 
-To monitor NSQ access: http://localhost:<nsqadmin-port>
+To monitor NSQ access: `http://localhost:<nsqadmin-port>`
 
 #### API
 
 To get last 10 averages, type:
 ```
-curl localhost:8080/v1/integers
+curl localhost:<api-port>/v1/integers
 ```
 
 To get just the last message, type:
