@@ -5,7 +5,7 @@ services:
     image: loopstock.io/integer-gen
     environment:
       - INTEGER_GEN_NSQ_URL=nsqd:4150
-      - INTEGER_GEN_INTERVAL=1s
+      - INTEGER_GEN_INTERVAL=100ms
     depends_on:
       - nsqd
   nsqd:
