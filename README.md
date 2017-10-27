@@ -19,9 +19,32 @@ To stop, you can use:
 make stop
 ```
 
-Also to cleanup all docker containers (including networks and volumes). P.S.: *Images will not be deleted*
+To cleanup all docker containers (including networks and volumes). P.S.: *docker images will not be deleted*
 ```
 make cleanup
+```
+
+#### Ports
+
+Some services are exposing ports, to check these ports type:
+```
+make ports
+```
+
+#### NSQAdmin - Message Broker
+
+To monitor NSQ access: http://localhost:<nsqadmin-port>
+
+#### API
+
+To get last 10 averages, type:
+```
+curl localhost:8080/v1/integers
+```
+
+To get just the last message, type:
+```
+curl localhost:8080/v1/integers/last
 ```
 
 ## Question
