@@ -3,6 +3,7 @@ version: '2'
 services:
   integer-api:
     image: loopstock.io/integer-api
+    restart: always # mysql take so long to goes up, process will die and run again
     environment:
       - INTEGER_API_PORT=8080
       - INTEGER_API_DATABASE_HOST=mysql
