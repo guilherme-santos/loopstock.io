@@ -1,0 +1,9 @@
+FROM golang:latest
+
+MAINTAINER Guilherme Silveira <xguiga@gmail.com>
+
+WORKDIR /go/src/github.com/guilherme-santos/loopstock.io/integeraverage-cal
+
+COPY . ./
+
+RUN make dep build-static

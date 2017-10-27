@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  integeraverage-cal:
+    image: loopstock.io/integeraverage-cal
+    environment:
+      - INTEGERAVERAGE_CAL_NSQLOOKUPD_URL=nsqlookupd:4161
+      - INTEGERAVERAGE_CAL_INTEGER_API_URL=http://integer-api:8080
+      - INTEGERAVERAGE_CAL_AVERAGE_INTERVAL=5s
+    networks:
+      - loopstock_network
+
+networks:
+  default:
+  loopstock_network:
+    external: true
