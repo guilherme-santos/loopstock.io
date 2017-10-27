@@ -50,3 +50,9 @@ curl localhost:8080/v1/integers/last
 ## Question
 
 ### Describe how you would provision a set of linux machines and how'd you orchestrate, monitor and troubleshoot these services?
+
+##### Provision and Orchestration
+
+This project generate 3 docker images `loopstock.io/integer-gen`, `loopstock.io/integeraverage-cal` and `loopstock.io/integer-api` and they're configured using envvars it means that their deploy is really easy using AWS ECS ((deploy-ecs)<https://github.com/guilherme-santos/deploy-ecs> is a tool that I created to make easier you build your image, send it to ECR, update your task-definition and do the deploy itself), if it's not an option use AWS ECS I'd use Kubernets and believe I'll have the same result.
+
+For the other servers MySQL, NSQd, I'd use **Container Linux Configuration** from CoreOS.
