@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  nsqlookupd:
+    image: nsqio/nsq
+    command: /nsqlookupd
+    networks:
+      - loopstock_network
+  nsqadmin:
+    image: nsqio/nsq
+    command: /nsqadmin -lookupd-http-address=nsqlookupd:4161
+    depends_on:
+      - nsqlookupd
+    networks:
+      - loopstock_network
+    ports:
+      - 4171
+
+networks:
+  loopstock_network:
+    external: true
