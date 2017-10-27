@@ -11,6 +11,10 @@ import (
 
 func main() {
 	dbClient, err := getDatabaseClient()
+	if err != nil {
+		log.Fatalln("Cannot connect to MySQL:", err)
+	}
+
 	serverPort := getRequiredEnv("INTEGER_API_PORT")
 
 	router := httprouter.New()
