@@ -44,7 +44,7 @@ curl localhost:<api-port>/v1/integers
 
 To get just the last message, type:
 ```
-curl localhost:8080/v1/integers/last
+curl localhost:<api-port>/v1/integers/last
 ```
 
 ## Question
