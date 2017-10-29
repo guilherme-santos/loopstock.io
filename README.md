@@ -51,8 +51,10 @@ curl localhost:8080/v1/integers/last
 
 ### Describe how you would provision a set of linux machines and how'd you orchestrate, monitor and troubleshoot these services?
 
-##### Provision and Orchestration
+This project generate 3 docker images `loopstock.io/integer-gen`, `loopstock.io/integeraverage-cal` and `loopstock.io/integer-api` and they're configured using environment variables, it means their deploy is really easy using AWS ECS ((deploy-ecs)<https://github.com/guilherme-santos/deploy-ecs> is a tool that I created to make easier you build your image, send it to ECR, update your task-definition and do the deploy itself). Another option is use GCP - Google Cloud Platform with Kubernetes, the third option I'd say to install and configure Kubernetes by your own.
 
-This project generate 3 docker images `loopstock.io/integer-gen`, `loopstock.io/integeraverage-cal` and `loopstock.io/integer-api` and they're configured using envvars it means that their deploy is really easy using AWS ECS ((deploy-ecs)<https://github.com/guilherme-santos/deploy-ecs> is a tool that I created to make easier you build your image, send it to ECR, update your task-definition and do the deploy itself), if it's not an option use AWS ECS I'd use Kubernets and believe I'll have the same result.
+So, in general I think you can work with these 3 possibilities: AWS, GCP or building everything by your own. To deploy and orchestrate AWS ECS, GPC Kubernetes or just Kubernetes. To monitor, AWS and GPC will give to you really nice tools with graphs etc. but if you decide do it everything you can use tools like InfluxDB, Statsd, and Grafana or even some others payed tools. For troubleshoot both platform have good tools (like AWS CloudWatch), but you also can use ELK Stack.
 
-For the other servers MySQL, NSQd, I'd use **Container Linux Configuration** from CoreOS.
+To database and Broker instances, you can use AWS RDS and AWS SQS, or use **Container Linux Configuration** from CoreOS to install and configure your servers.
+
+
