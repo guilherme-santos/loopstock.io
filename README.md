@@ -57,4 +57,13 @@ So, in general I think you can work with these 3 possibilities: AWS, GCP or buil
 
 To database and Broker instances, you can use AWS RDS and AWS SQS, or use **Container Linux Configuration** from CoreOS to install and configure your servers.
 
+## Bonus point
 
+Related to the bonus point I thought a little bit about the problem, but I didn't really implement anything because I think the problem is not so clear to me, I mean I cannot see it as a real problem. But some options...
+
+- I could have a main generator that is shared between all **integer-gen** instances, the problem this instance cannot be scaled.
+- I could make the random seed configurable, it means you can set the seed to be used, the problem is each instance need to have a different seed what I believe is difficult to manage.
+- I could have a new service in front of **integer-gen** that discard in case both services generate the same number, it looks for me a big overhead .
+- I could also check on **integeraverage-cal** if there is a duplicated number, maybe I'll need to identify which instance generate the number, but I don't think it's a big problem.
+
+That was some ways I thought to solve, I didn't really like so much all these solution, that's why I didn't implement and I'd prefer understand a little bit more what's the impact of generate the same number at the same time.
